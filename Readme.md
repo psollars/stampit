@@ -1,3 +1,5 @@
+# stampit
+
 Run `main.rs` as a one-off debug version
 
 ```sh
@@ -21,3 +23,13 @@ Optionally, you can install the binary to your cargo path `~/.cargo/bin`
 ```sh
 cargo install --path .
 ```
+
+## changelog
+
+**0.1.1**
+
+- Fix hidden files bug to avoid renaming files like `.DS_Store` on macOS
+
+**0.1.0**
+
+- Initial release

@@ -168,6 +168,12 @@ fn rename_files(
 
     // Process each file
     for file_path in files {
+        if let Some(file_name) = file_path.file_name().and_then(|n| n.to_str()) {
+            if file_name.starts_with('.') {
+                continue; // Skip hidden files like .DS_Store
+            }
+        }
+
         let formatted_date = if exif_only {
             format_exif_date(&file_path, date_format)
         } else if modified_only {
@@ -197,7 +203,7 @@ fn rename_files(
 
 fn main() {
     let matches = Command::new("stampit")
-        .version("0.1.0")
+        .version("0.1.1")
         .author("Patrick Sollars <pjsollars@gmail.com>")
         .about("Rename files using EXIF or last modified date.")
         .arg(
